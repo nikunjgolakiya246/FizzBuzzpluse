@@ -7,6 +7,16 @@ ______   _              ______
 \_|     |_| /___| /___| \____/   \____| /___| /___|
 """)
 
+def get_user_input(word):
+    got_integer = False
+    while not got_integer:
+        try:
+            value = int(input(f"Enter integer value for {word}: "))
+            got_integer = True
+        except Exception as e:
+            print("Please make sure to enter integer value!")
+    return value
+
 def fizz_buzz_plus_plus(f, b, t):
     counter = 0
     prev_word = ""
@@ -41,17 +51,12 @@ def fizz_buzz_plus_plus(f, b, t):
         print(output)
 
 while True:
+    # Input values
+    f = get_user_input("f")
+    b = get_user_input("b")
+    t = get_user_input("t")
 
-    try:
-        # Input values
-        f = int(input("Enter integer value for f: "))
-        b = int(input("Enter integer value for b: "))
-        t = int(input("Enter integer value for t: "))
-
-        fizz_buzz_plus_plus(f,b,t)
-
-    except ValueError:
-        print("Invalid input. Please enter integer values for f, b, and t.")
+    fizz_buzz_plus_plus(f,b,t)
 
     while True:
         response = input("Do You Want To Repeat? (yes/no)").lower()
